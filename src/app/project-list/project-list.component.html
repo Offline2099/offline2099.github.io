@@ -1,0 +1,55 @@
+<div 
+  *ngFor="let project of projects; index as i"
+  class="project-block">
+
+  <div class="project-data-block">
+
+    <div class="project-name">{{project.name}}</div>
+
+    <div class="project-links">
+      <ng-container *ngFor="let link of links; index as j">
+        <a 
+          *ngIf="j ? project.repoUrl : project.url"  
+          class="project-url url-website" 
+          href="https://{{j ? project.repoUrl : project.url}}"
+          target="_blank">
+          <img 
+            class="link-type-icon" 
+            src="./assets/img/icons/{{link.iconName}}.png" />
+          <span>{{link.text}}</span>
+          <img 
+            class="ext-link-icon" 
+            src="./assets/img/icons/external-link.png" />
+          <div class="project-link-underline"></div>
+        </a>
+        <div
+          *ngIf="j != links.length - 1 && project.repoUrl"
+          class="project-links-separator"></div>
+      </ng-container>
+    </div>
+
+    <app-image-carousel
+      *ngIf="project.images"
+      [folderPath]="project.images.name"
+      [imageNames]="imageNames[i]"
+      [selectedImage]="1">
+    </app-image-carousel>
+
+  </div>
+
+  <div 
+    class="project-description-block"
+    [ngClass]="{'features-hidden-mobile': !featuresShown[i]}">
+    <p>{{project.description.summary}}</p>
+    <div 
+      class="project-features-header"      
+      (click)="toggleFeatures(i)">
+      <span>Features</span>
+      <span class="project-features-header-triangle">&#9660;</span>
+    </div>
+    <ul class="project-features-list">
+      <li *ngFor="let f of project.description.features">{{f}}</li>
+    </ul>
+  </div>
+
+</div>

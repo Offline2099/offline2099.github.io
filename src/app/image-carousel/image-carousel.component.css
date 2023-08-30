@@ -1,0 +1,164 @@
+
+/*   Containers   */
+
+:host {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  user-select: none;
+}
+
+:host.inside-overlay {
+  max-width: min(90%, 16 * (90vh - 54px)/ 9 + 88px);
+  max-height: calc(90vh - 10px);
+  margin: 0 auto;
+  padding-top: 10px;
+  border-radius: 10px;
+  background: #222;
+}
+
+.full-screen-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  background: rgba(18, 18, 18, .75);
+  animation: fadeIn .5s;
+}
+
+.main-block {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  max-height: calc(90vh - 54px);
+}
+
+
+/*   Image Block   */
+
+.project-images-container {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  aspect-ratio: 16/9;
+  border: 1px solid #444;
+  background: #111;
+}
+
+.project-image {
+  display: block;
+  width: 0;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  transition: filter .2s, opacity .5s;
+}
+
+.project-image-selected {
+  width: 100%;
+  opacity: 1;
+}
+
+:host.inside-overlay .project-image {
+  cursor: default;
+}
+
+.image-click-blocker {
+  display: none;
+}
+
+@media (hover: hover) {
+  .project-image:hover {
+    filter: brightness(1.05);
+  }
+}
+
+@media (max-width: 899px) {
+  .image-click-blocker {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+/*   Buttons   */
+
+.side-button-container {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+:host.inside-overlay .side-button-container {
+  padding: 0 10px;
+}
+
+.side-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 5px;
+  border-radius: 4px;
+  color: #999;
+  background: #2c2c2c;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.bottom-buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+.bottom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  border-radius: 25%;
+  background: #2c2c2c;
+  font-size: 14px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.bottom-button.button-selected {
+  background: #383838;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .side-button:hover {
+    background: #333;
+  }
+  .bottom-button:hover {
+    background: #333;
+  }
+}
+
+@media (max-width: 599px) {
+  .side-button {
+    height: 32px;
+    font-size: 14px;
+  }
+  .bottom-button {
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,48 @@
+
+<div class="main-block">
+
+  <div class="side-button-container">
+    <div 
+      class="side-button"
+      (click)="previousImage()">&#9664;</div>
+  </div>
+
+  <div class="project-images-container">
+    <img 
+      *ngFor="let image of imageNames; index as i"
+      class="project-image"
+      [ngClass]="{'project-image-selected': i + 1 == currentImage}"
+      src="./assets/img/projects/{{folderPath}}/{{(type == 'overlay' ? '' : 'small/') + image}}.png"
+      (click)="toggleOverlay()"/>
+    <div class="image-click-blocker"></div>
+  </div>
+
+  <div class="side-button-container">
+    <div 
+      class="side-button"
+      (click)="nextImage()">&#9654;</div>
+  </div>
+
+</div>
+
+<div class="bottom-buttons-container">
+  <div
+    *ngFor="let b of imageNames; index as i"
+    class="bottom-button"
+    [ngClass]="{'button-selected': i + 1 == currentImage}"
+    (click)="switchCurrentImage(i + 1)">{{i + 1}}</div>
+</div>
+
+<div 
+  *ngIf="type == 'normal' && overlayActive"
+  class="full-screen-overlay"
+  (click)="toggleOverlay()">
+  <app-image-carousel
+    type="overlay"
+    [folderPath]="folderPath"
+    [imageNames]="imageNames"
+    [selectedImage]="currentImage"
+    (imageChanged)="switchCurrentImage($event)"
+    (click)="$event.stopPropagation()">
+  </app-image-carousel>
+</div>
