@@ -15,7 +15,7 @@
   width: min(100% - 20px, 1300px);
   margin: 20px auto;
   border-radius: 8px;
-  background: #1c1c1c;
+  background: #1e1e22;
   box-shadow: 0 0 2px 2px #222 inset;
 }
 
@@ -162,12 +162,12 @@
   margin-left: 20px;
   color: #999;
   font-size: smaller;
-  transform: rotateX(180deg) translateY(-2.5px);
+  transform: rotateX(180deg) translateY(-3px);
   transition: .2s;
 }
 
 .features-hidden-mobile .project-features-header-triangle {
-  transform: rotateX(0deg);
+  transform: rotateX(0deg) translateY(-1px);
 }
 
 .project-features-list {
@@ -188,7 +188,7 @@
     flex-wrap: wrap;
   }
   .project-description-block {
-    padding: 10px 15px;
+    padding: 10px 15px 15px 15px;
     font-size: 15px;
   }
 }
@@ -213,6 +213,13 @@
     letter-spacing: .02em;
     user-select: none;
     cursor: pointer;
+    transition: .2s;
+  }
+  .features-hidden-mobile .project-features-header {
+    margin-bottom: 0;
+    border-radius: 5px;
+    border-color: transparent;
+    background: #2c2c2f;
   }
   .project-features-list {
     animation: fadeIn .5s;
