@@ -12,7 +12,7 @@
       *ngFor="let image of imageNames; index as i"
       class="project-image"
       [ngClass]="{'project-image-selected': i + 1 == currentImage}"
-      src="./assets/img/projects/{{folderPath}}/{{(type == 'overlay' ? '' : 'small/') + image}}.png"
+      src="./assets/img/projects/{{folderPath}}/{{(isOverlay ? '' : 'small/') + image}}.png"
       (click)="toggleOverlay()"/>
     <div class="image-click-blocker"></div>
   </div>
@@ -34,11 +34,11 @@
 </div>
 
 <div 
-  *ngIf="type == 'normal' && overlayActive"
+  *ngIf="!isOverlay && overlayActive"
   class="full-screen-overlay"
   (click)="toggleOverlay()">
   <app-image-carousel
-    type="overlay"
+    [isOverlay]="true"
     [folderPath]="folderPath"
     [imageNames]="imageNames"
     [selectedImage]="currentImage"
