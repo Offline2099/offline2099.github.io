@@ -62,7 +62,7 @@ export const Websites: WebsiteData[] = [
         'Nested collapsible blocks offer a compact and intuitive layout for viewing and navigating the timeline structure, also making it easier to remember.',
         'The timeline can be displayed in either direction: chronologically (starting from the formation of the planet) or inversely (diving from the present into older periods and epochs).',
         'There is a quick navigation panel on the right that allows the user to jump to any specific timeline division with a single click.',
-        'The site usilizes Angular components recursively. This approach allows to display a fairly large structure with relatively little code.'
+        'The site utilizes Angular components recursively. This approach allows to display a fairly large structure with relatively little code.'
       ]
     }
   },
@@ -95,7 +95,7 @@ export const Websites: WebsiteData[] = [
     description: {
       summary: 'An interactive periodic table with some basic information and sample images for each chemical element. Designed to work comfortably on small screens.',
       features: [
-        'The user can hover over any element to see the sample or click on the element to see larger image and basic data. It is also possble to click through the elements in a manner similar to turning pages in a book.',
+        'The user can hover over any element to see the sample or click on the element to see larger image and basic data. It is also possible to click through the elements in a manner similar to turning pages in a book.',
         'The periodic table remains conveniently usable on narrow screens and mobile devices, providing an additional interface to navigate it.',
         'A randomized animation with dynamically generated items runs in the background.',
         'This project can possibly be expanded into a larger educational website filled with more detailed information about the periodic table and each chemical element.'
