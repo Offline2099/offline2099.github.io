@@ -11,11 +11,13 @@ export const Intro: string[] = [
 export const Websites: WebsiteData[] = [
   {
     name: 'Photo Gallery',
-    url: 'offline2099.github.io/photo-gallery',
-    repoUrl: 'github.com/Offline2099/gallery-app',
+    urls: {
+      site: 'offline2099.github.io/photo-gallery',
+      repo: 'github.com/Offline2099/gallery-app'
+    },    
     images: {
-      name: 'photo-gallery',
-      n: 6
+      nameTemplate: 'photo-gallery',
+      number: 6
     },
     description: {
       summary: 'An image gallery with hundreds of photos taken by me while living in Thailand over the last several years. The same interface can possibly be used for organizing and displaying a collection of any other photo albums or image sets.',
@@ -26,15 +28,17 @@ export const Websites: WebsiteData[] = [
         'The user can always switch between several different ways of viewing the same gallery. Each image can also be easily viewed in full size or downloaded.',
         'There are some experimental features, such as the no-click mode that allows to switch between images by simply hovering over the preview.',
         'The UI is not cluttered with unnecessary junk, such as likes or social buttons. Most of the existing features (such as captions and tags) can also be completely hidden.'
-       ]
+      ]
     }
   },
   {
     name: 'Raidy-Raidy',
-    url: 'raidy-raidy.com',
+    urls: {
+      site: 'raidy-raidy.com'
+    },
     images: {
-      name: 'raidy-raidy',
-      n: 9
+      nameTemplate: 'raidy-raidy',
+      number: 9
     },
     description: {
       summary: 'A website that explains strategies for a popular multiplayer video game, along with various other related information.',
@@ -49,11 +53,13 @@ export const Websites: WebsiteData[] = [
   },
   {
     name: 'Geologic History of Earth',
-    url: 'offline2099.github.io/history-of-earth',
-    repoUrl: 'github.com/Offline2099/earth-app',
+    urls: {
+      site: 'offline2099.github.io/history-of-earth',
+      repo: 'github.com/Offline2099/earth-app'
+    },
     images: {
-      name: 'history-of-earth',
-      n: 6
+      nameTemplate: 'history-of-earth',
+      number: 6
     },
     description: {
       summary: 'A brief summary of the Earth\'s geologic history. Shows the structure of the geologic time scale in a simple interactive way. Gives a basic understanding of the key features and events that characterize each time interval.',
@@ -68,11 +74,13 @@ export const Websites: WebsiteData[] = [
   },
   {
     name: 'Calendar App',
-    url: 'offline2099.github.io/calendar',
-    repoUrl: 'github.com/Offline2099/calendar-app',
+    urls: {
+      site: 'offline2099.github.io/calendar',
+      repo: 'github.com/Offline2099/calendar-app'
+    },
     images: {
-      name: 'calendar',
-      n: 4
+      nameTemplate: 'calendar',
+      number: 4
     },
     description: {
       summary: 'A simple yet powerful application that displays the calendar for any year between 20,000\xa0BC (ice age) and 20,000\xa0AD (deep future) and some additional info.',
@@ -86,11 +94,13 @@ export const Websites: WebsiteData[] = [
   },
   {
     name: 'Periodic Table',
-    url: 'offline2099.github.io/periodic-table',
-    repoUrl: 'github.com/Offline2099/periodic-table-app',
+    urls: {
+      site: 'offline2099.github.io/periodic-table',
+      repo: 'github.com/Offline2099/periodic-table-app'
+    },
     images: {
-      name: 'periodic-table',
-      n: 2
+      nameTemplate: 'periodic-table',
+      number: 2
     },
     description: {
       summary: 'An interactive periodic table with some basic information and sample images for each chemical element. Designed to work comfortably on small screens.',
@@ -104,11 +114,13 @@ export const Websites: WebsiteData[] = [
   },
   {
     name: 'Color Converter',
-    url: 'offline2099.github.io/colors',
-    repoUrl: 'github.com/Offline2099/colors-app',
+    urls: {
+      site: 'offline2099.github.io/colors',
+      repo: 'github.com/Offline2099/colors-app'
+    },
     images: {
-      name: 'colors',
-      n: 4
+      nameTemplate: 'colors',
+      number: 4
     },
     description: {
       summary: 'An easy-to-use color converter. Can also be thought of as a demonstration for explaining color spaces (RGB, HSL, and CMYK). Includes multiple input notations for each color space. Can be used as a color picker.',
@@ -118,7 +130,7 @@ export const Websites: WebsiteData[] = [
         'Provides an interactive visual demonstration of how changing a color in one format affects the representation of that color in other formats.',
         'Includes complex step-by-step validation for text input (which uses regular expressions). Shows exactly what is wrong in case of an error. Provides warnings for valid but odd input.',
         'Contains a separate tab with a brief summary of how the human eye recognizes and distinguishes colors, along with a simple explanation of how color spaces are constructed.',
-        'Can possibly be upgraded to work with more rare and exotic color spaces or color notations.'        
+        'Can possibly be upgraded to work with more rare and exotic color spaces or color notations.'       
       ]
     }
   }

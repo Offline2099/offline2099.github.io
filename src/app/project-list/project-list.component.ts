@@ -1,62 +1,63 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { WebsiteData } from '../interfaces';
+import { WebsiteData, Project } from '../interfaces';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css']
 })
-export class ProjectListComponent implements OnInit, AfterViewInit {
+export class ProjectListComponent {
 
-  constructor() { }
+  @Input() data: WebsiteData[] = [];
 
-  @Input() projects: WebsiteData[] = [];
-
-  links = [
-    {
-      text: 'Website',
-      iconName: 'world'
-    },
-    {
-      text: 'Repository',
-      iconName: 'github'
-    }
-  ];
-
-  imageNames: string[][] = [];
-  featuresShown: boolean[] = [];
+  projects: Project[] = [];
 
   ngOnInit(): void {
-    this.formImageNames();
-    this.featuresShown = Array(this.projects.length).fill(false);
+    this.fillProjectsData();
   }
 
   ngAfterViewInit(): void {
     this.loadFullSizeImages();
   }
 
-  formImageNames(): void {
-    this.projects.forEach((p, i) => {
-      if (p.images) {
-        this.imageNames[i] = Array(p.images.n).fill('');
-        this.imageNames[i].forEach((name, j) => {
-          this.imageNames[i][j] = p.images!.name + '-' + (j + 1);
-        });
+  fillProjectsData(): void {
+    this.projects = this.data.map(site => {
+      return {
+        name: site.name,
+        links: [
+          {icon: 'world', text: 'Website', url: site.urls.site},
+          {icon: 'github', text: 'Repository', url: site.urls.repo || ''}
+        ],
+        images: this.formImageURLs(site),
+        description: site.description,
+        featuresShown: false
       }
     });
   }
 
+  formImageURLs(site: WebsiteData): Project['images'] {
+
+    let path: string = './assets/img/projects/';
+    let project: string = site.images.nameTemplate;
+
+    return Array.from(Array(site.images.number), (e, i) => ({
+      full: `${path}${project}/${project}-${i + 1}.png`,
+      small: `${path}${project}/small/${project}-${i + 1}.png`
+    }));
+  }
+
   loadFullSizeImages(): void {
-    this.imageNames.flat().forEach(src => {
-      let img = new Image();
-      let project: string = src.split('-').slice(0, -1).join('-');
-      img.src = './assets/img/projects/' + project + '/' + src + '.png';
+    this.projects.forEach(p => {
+      p.images.forEach(image => {
+        let img = new Image();
+        img.src = image.full;
+      });
     });
   }
 
-  toggleFeatures(index: number): void {
-    this.featuresShown[index] = !this.featuresShown[index];
+  toggleFeatures(project: Project): void {
+    project.featuresShown = !project.featuresShown;
   }
 
 }

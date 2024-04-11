@@ -1,5 +1,7 @@
 import { Component, Input, HostBinding, Output, EventEmitter } from '@angular/core';
 
+import { Project } from '../interfaces';
+
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
@@ -7,38 +9,30 @@ import { Component, Input, HostBinding, Output, EventEmitter } from '@angular/co
 })
 export class ImageCarouselComponent {
 
-  constructor() { }
-
-  @Input() folderPath: string = '';
-  @Input() imageNames: string[] = [];
-  @Input() selectedImage: number = 1;
-
   @HostBinding('class.inside-overlay') @Input() isOverlay: boolean = false;
+
+  @Input() images: Project['images'] = [];
+  @Input() selectedImage: number = 1;
 
   @Output() imageChanged = new EventEmitter<number>();
 
-  currentImage: number = 1;
   overlayActive: boolean = false;
 
-  ngOnChanges(): void {
-    this.currentImage = this.selectedImage;
-  }
-
   nextImage(): void {
-    let newNumber: number = this.currentImage + 1;
-    if (newNumber > this.imageNames.length) newNumber = 1;
-    this.switchCurrentImage(newNumber);
+    let newNumber: number = this.selectedImage + 1;
+    if (newNumber > this.images.length) newNumber = 1;
+    this.selectImage(newNumber);
   }
 
   previousImage(): void {
-    let newNumber: number = this.currentImage - 1;
-    if (newNumber <= 0) newNumber = this.imageNames.length;
-    this.switchCurrentImage(newNumber);
+    let newNumber: number = this.selectedImage - 1;
+    if (newNumber <= 0) newNumber = this.images.length;
+    this.selectImage(newNumber);
   }
 
-  switchCurrentImage(n: number): void {
-    if (n > 0 && n <= this.imageNames.length && n != this.currentImage) {
-      this.currentImage = n;
+  selectImage(n: number): void {
+    if (n > 0 && n <= this.images.length && n != this.selectedImage) {
+      this.selectedImage = n;
       this.imageChanged.emit(n);
     }
   }

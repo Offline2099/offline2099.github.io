@@ -9,10 +9,10 @@
 
   <div class="project-images-container">
     <img 
-      *ngFor="let image of imageNames; index as i"
+      *ngFor="let image of images; index as i"
       class="project-image"
-      [ngClass]="{'project-image-selected': i + 1 == currentImage}"
-      src="./assets/img/projects/{{folderPath}}/{{(isOverlay ? '' : 'small/') + image}}.png"
+      [ngClass]="{'project-image-selected': i + 1 == selectedImage}"
+      src="{{isOverlay ? image.full : image.small}}"
       (click)="toggleOverlay()"/>
     <div class="image-click-blocker"></div>
   </div>
@@ -27,10 +27,10 @@
 
 <div class="bottom-buttons-container">
   <div
-    *ngFor="let b of imageNames; index as i"
+    *ngFor="let b of images; index as i"
     class="bottom-button"
-    [ngClass]="{'button-selected': i + 1 == currentImage}"
-    (click)="switchCurrentImage(i + 1)">{{i + 1}}</div>
+    [ngClass]="{'button-selected': i + 1 == selectedImage}"
+    (click)="selectImage(i + 1)">{{i + 1}}</div>
 </div>
 
 <div 
@@ -39,10 +39,9 @@
   (click)="toggleOverlay()">
   <app-image-carousel
     [isOverlay]="true"
-    [folderPath]="folderPath"
-    [imageNames]="imageNames"
-    [selectedImage]="currentImage"
-    (imageChanged)="switchCurrentImage($event)"
+    [images]="images"
+    [selectedImage]="selectedImage"
+    (imageChanged)="selectImage($event)"
     (click)="$event.stopPropagation()">
   </app-image-carousel>
 </div>
