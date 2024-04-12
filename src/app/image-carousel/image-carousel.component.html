@@ -11,7 +11,7 @@
     <img 
       *ngFor="let image of images; index as i"
       class="project-image"
-      [ngClass]="{'project-image-selected': i + 1 == selectedImage}"
+      [ngClass]="{'project-image-selected': i == selectedImage}"
       src="{{isOverlay ? image.full : image.small}}"
       (click)="toggleOverlay()"/>
     <div class="image-click-blocker"></div>
@@ -29,8 +29,8 @@
   <div
     *ngFor="let b of images; index as i"
     class="bottom-button"
-    [ngClass]="{'button-selected': i + 1 == selectedImage}"
-    (click)="selectImage(i + 1)">{{i + 1}}</div>
+    [ngClass]="{'button-selected': i == selectedImage}"
+    (click)="selectImage(i)">{{i + 1}}</div>
 </div>
 
 <div 
