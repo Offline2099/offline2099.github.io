@@ -43,7 +43,8 @@ export class ProjectListComponent {
 
     return Array.from(Array(site.images.number), (e, i) => ({
       full: `${path}${project}/${project}-${i + 1}.png`,
-      small: `${path}${project}/small/${project}-${i + 1}.png`
+      small: `${path}${project}/small/${project}-${i + 1}.png`,
+      alt: `${site.name} - Image ${i + 1}`
     }));
   }
 

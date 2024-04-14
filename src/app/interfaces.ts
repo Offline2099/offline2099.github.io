@@ -24,6 +24,7 @@ export interface Project {
   images: {
     full: string;
     small: string;
+    alt: string;
   }[];
   description: WebsiteData['description'];
   featuresShown: boolean;

@@ -13,6 +13,7 @@
       class="project-image"
       [ngClass]="{'project-image-selected': i == selectedImage}"
       src="{{isOverlay ? image.full : image.small}}"
+      alt="{{image.alt}}"
       (click)="toggleOverlay()"/>
     <div class="image-click-blocker"></div>
   </div>
