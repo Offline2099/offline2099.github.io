@@ -59,7 +59,7 @@
   width: 0;
   height: 100%;
   opacity: 0;
-  cursor: zoom-in;
+  cursor: pointer;
   transition: filter .2s, opacity .5s;
 }
 

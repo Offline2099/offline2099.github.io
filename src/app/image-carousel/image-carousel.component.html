@@ -7,7 +7,7 @@
       (click)="previousImage()">&#9664;</div>
   </div>
 
-  <div class="project-images-container">
+  <div #scrollTarget class="project-images-container">
     <img 
       *ngFor="let image of images; index as i"
       class="project-image"
