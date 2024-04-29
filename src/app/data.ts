@@ -32,26 +32,6 @@ export const Websites: WebsiteData[] = [
     }
   },
   {
-    name: 'Raidy-Raidy',
-    urls: {
-      site: 'raidy-raidy.com'
-    },
-    images: {
-      nameTemplate: 'raidy-raidy',
-      number: 9
-    },
-    description: {
-      summary: 'A website that explains strategies for a popular multiplayer video game, along with various other related information.',
-      features: [
-        'Arguably, the best available website on this particular topic. The content may be of no interest to the general public, although it receives mostly positive reactions from people familiar with the game.',
-        'The site also serves as a polygon for experimenting with design, visual effects, various ways of organizing and presenting complex information, implementing some algorithms, new features of the framework, etc.',
-        'The total volume of data is quite large. The site has hundreds of pages and utilizes dynamic routing. Nested collapsible blocks are used extensively to display each portion of the data in a well-structured and easily accessible way.',
-        'Raid strategies are presented in the form of nested lists. This also demonstrates how nested lists can be used to convey a description of a complex process and show its structure in a more convenient and intuitive way than traditional text written as a sequence of paragraphs.',
-        'Another notable part of the site is the lists of rewards for each fight, called "loot tables". These tables contain a large number of items with multiple parameters. The items can be sorted, grouped, or filtered in a variety of ways, depending on the user\'s needs and preferences.'
-      ]
-    }
-  },
-  {
     name: 'Geologic History of Earth',
     urls: {
       site: 'offline2099.github.io/history-of-earth',
@@ -69,6 +49,47 @@ export const Websites: WebsiteData[] = [
         'The timeline can be displayed in either direction: chronologically (starting from the formation of the planet) or inversely (diving from the present into older periods and epochs).',
         'There is a quick navigation panel on the right that allows the user to jump to any specific timeline division with a single click.',
         'The site utilizes Angular components recursively. This approach allows to display a fairly large structure with relatively little code.'
+      ]
+    }
+  },
+  {
+    name: 'Solar System',
+    urls: {
+      site: 'offline2099.github.io/solar-system',
+      repo: 'github.com/Offline2099/solar-system'
+    },
+    images: {
+      nameTemplate: 'solar-system',
+      number: 2
+    },
+    description: {
+      summary: 'An overview of the Solar System with basic information about the Sun, planets, and other objects. Made in a futuristic sci-fi style.',
+      features: [
+        'Each region of the Solar System, as well as each celestial body, is shown as a neat collapsible block filled with relevant data.',
+        'Each data property has a hint that appears on hover and explains what it means in a brief and concise way. Values also have hints that show them converted to other measurement units, if applicable.',
+        'The design is intended to look futuristic, inspired by various fictional UI often seen in sci-fi movies. At the same time, it is rather minimalistic and not overloaded with useless visual clutter.',
+        'All elements are responsive and work smoothly on tablets or mobile screens.',
+        'This project can be potentially expanded to include more detailed information about each planet, as well as moons, dwarf planets, asteroids, comets, and other parts of the Solar System.'
+      ]
+    }
+  },
+  {
+    name: 'Raidy-Raidy',
+    urls: {
+      site: 'raidy-raidy.com'
+    },
+    images: {
+      nameTemplate: 'raidy-raidy',
+      number: 9
+    },
+    description: {
+      summary: 'A website that explains strategies for a popular multiplayer video game, along with various other related information.',
+      features: [
+        'Arguably, the best available website on this particular topic. The content may be of no interest to the general public, although it receives mostly positive reactions from people familiar with the game.',
+        'The site also serves as a polygon for experimenting with design, visual effects, various ways of organizing and presenting complex information, implementing some algorithms, new features of the framework, etc.',
+        'The total volume of data is quite large. The site has hundreds of pages and utilizes dynamic routing. Nested collapsible blocks are used extensively to display each portion of the data in a well-structured and easily accessible way.',
+        'Raid strategies are presented in the form of nested lists. This also demonstrates how nested lists can be used to convey a description of a complex process and show its structure in a more convenient and intuitive way than traditional text written as a sequence of paragraphs.',
+        'Another notable part of the site is the lists of rewards for each fight, called "loot tables". These tables contain a large number of items with multiple parameters. The items can be sorted, grouped, or filtered in a variety of ways, depending on the user\'s needs and preferences.'
       ]
     }
   },
