@@ -13,7 +13,7 @@ export const Websites: WebsiteData[] = [
     name: 'Photo Gallery',
     urls: {
       site: 'offline2099.github.io/photo-gallery',
-      repo: 'github.com/Offline2099/gallery-app'
+      repo: 'github.com/Offline2099/photo-gallery'
     },    
     images: {
       nameTemplate: 'photo-gallery',
@@ -35,7 +35,7 @@ export const Websites: WebsiteData[] = [
     name: 'Geologic History of Earth',
     urls: {
       site: 'offline2099.github.io/history-of-earth',
-      repo: 'github.com/Offline2099/earth-app'
+      repo: 'github.com/Offline2099/history-of-earth'
     },
     images: {
       nameTemplate: 'history-of-earth',
@@ -97,7 +97,7 @@ export const Websites: WebsiteData[] = [
     name: 'Calendar App',
     urls: {
       site: 'offline2099.github.io/calendar',
-      repo: 'github.com/Offline2099/calendar-app'
+      repo: 'github.com/Offline2099/calendar'
     },
     images: {
       nameTemplate: 'calendar',
@@ -119,7 +119,7 @@ export const Websites: WebsiteData[] = [
     name: 'Periodic Table',
     urls: {
       site: 'offline2099.github.io/periodic-table',
-      repo: 'github.com/Offline2099/periodic-table-app'
+      repo: 'github.com/Offline2099/periodic-table'
     },
     images: {
       nameTemplate: 'periodic-table',
@@ -139,7 +139,7 @@ export const Websites: WebsiteData[] = [
     name: 'Color Converter',
     urls: {
       site: 'offline2099.github.io/colors',
-      repo: 'github.com/Offline2099/colors-app'
+      repo: 'github.com/Offline2099/colors'
     },
     images: {
       nameTemplate: 'colors',
