@@ -1,27 +1,13 @@
-# Offline2099
+# offline2099.github.io
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+## Project Description
 
-## Development server
+A list/portfolio of websites and small demo projects.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technical Information
 
-## Code scaffolding
+This project is made with Angular.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* To run the app in the development mode, run `ng serve` in the project directory. Open [http://localhost:4200](http://localhost:4200) to view it in the browser. The page will reload if you make edits.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* To build the app in the production mode, run `ng build` in the project directory. The app will be saved to the `dist/` directory.
