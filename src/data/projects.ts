@@ -109,5 +109,19 @@ export const PROJECTS: ProjectData[] = [
         'Can possibly be upgraded to work with more rare and exotic color spaces or color notations.'       
       ]
     }
+  },
+  {
+    id: 'drag-and-drop',
+    name: 'Drag-and-Drop Demo',
+    numberOfImages: 4,
+    description: {
+      summary: 'A demo project that utilizes the native drag-and-drop API to create lists and tables with draggable UI elements which can be easily moved or swapped by the user.',
+      features: [
+        'Demonstrates drag-and-drop functionality for elements arranged in a simple vertical list, elements in multiple groups, a two-dimensional table, and a nested list with an unlimited nesting depth.',
+        'All possible actions are smoothly animated, providing a quick and unambiguous visual feedback to the user.',
+        'There are options that allow or prevent certain actions, which result in slightly different behaviors. The lists of elements can be easily reset or shuffled.',
+        'Currently, the demo is only designed for desktop devices. However, it can be expanded to include mobile and touchscreen devices.'    
+      ]
+    }
   }
 ];
