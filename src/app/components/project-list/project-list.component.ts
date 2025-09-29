@@ -32,7 +32,7 @@ export class ProjectListComponent {
   }
 
   ngAfterViewInit(): void {
-    if (this.screen !== Screen.mobile) this.loadFullSizeImages();
+    this.preloadAllImages();
   }
 
   constructProjectList(): Project[] {
@@ -50,13 +50,24 @@ export class ProjectListComponent {
     }));
   }
 
-  loadFullSizeImages(): void {
+  preloadAllImages(): void {
     this.projects.forEach(project => {
-      project.imageData.forEach(image => {
-        const img = new Image();
-        img.src = image.fullSizeURL;
-      });
+      this.preloadImages(project.imageData.map(data => data.smallSizeURL).slice(1));
+      if (this.screen !== Screen.mobile)
+        this.preloadImages(project.imageData.map(data => data.fullSizeURL));
     });
+  }
+
+  preloadImages(imageURLs: string[]): void {
+    if (!imageURLs.length) return;
+    const preload = (index: number) => {
+      const image = new Image();
+      image.src = imageURLs[index];
+      if (index === imageURLs.length - 1) return;
+      image.onload = () => { preload(index + 1) };
+      image.onerror = () => { preload(index + 1) };
+    }
+    preload(0);
   }
 
   toggleFeatures(project: Project): void {
