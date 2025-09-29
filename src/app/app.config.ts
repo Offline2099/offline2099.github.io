@@ -3,7 +3,6 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    
+    provideZoneChangeDetection({ eventCoalescing: true })
   ]
 };

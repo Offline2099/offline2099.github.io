@@ -1,0 +1,29 @@
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin bg-mesh($color-bg, $color-h, $color-v, $gap-h, $gap-v, $line-h: 1px, $line-v: 1px, $angle: 0deg) {
+  background-color: $color-bg;
+  background-image: 
+    // Horizontal lines, vertical gap
+    repeating-linear-gradient(
+      $angle,
+      transparent 0, transparent $gap-v,
+      $color-h calc($gap-v + 1px), $color-h calc($gap-v + 1px + $line-h)
+    ),
+    // Vertical lines, horizontal gap
+    repeating-linear-gradient(
+      90deg + $angle,
+      transparent 0, transparent $gap-h,
+      $color-v calc($gap-h + 1px), $color-v calc($gap-h + 1px + $line-h)
+    )
+}

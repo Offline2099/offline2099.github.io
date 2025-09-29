@@ -1,0 +1,49 @@
+<div class="image-block">
+
+  <!-- Previous Image Button -->
+  <div class="side-button-container">
+    <button type="button" class="side-button" (click)="previousImage()">&#9664;</button>
+  </div>
+
+  <!-- Current Image -->
+  <div #scrollTarget class="image-container">
+    @if (images()[selectedIndex]; as image) {
+      <img
+        [src]="isInsideOverlay() ? image.fullSizeURL : image.smallSizeURL"
+        [alt]="image.altText"
+        (click)="toggleOverlay()"
+      />
+    }
+  </div>
+
+  <!-- Next Image Button -->
+  <div class="side-button-container">
+    <button type="button" class="side-button" (click)="nextImage()">&#9654;</button>
+  </div>
+
+</div>
+
+<!-- Image Buttons -->
+<div class="button-block">
+  @for (button of images(); track $index) {
+    <button
+      type="button"
+      class="bottom-button"
+      [ngClass]="{'selected': $index == selectedIndex}"
+      (click)="selectImage($index)">
+      {{$index + 1}}
+    </button>
+  }
+</div>
+
+<!-- Overlay -->
+@if (isOverlayActive && screen !== Screen.mobile && !isInsideOverlay()) {
+  <div class="overlay" (click)="toggleOverlay()">
+    <app-image-carousel
+      [images]="images()"
+      [isInsideOverlay]="true"
+      (imageChanged)="selectImage($event)"
+      (click)="$event.stopPropagation()"
+    />
+  </div>
+}

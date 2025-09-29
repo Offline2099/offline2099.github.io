@@ -1,0 +1,84 @@
+@use '../styles-shared' as *;
+
+$footer-height: 100px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh + $footer-height);
+  @include bg-mesh(transparent, $bg-line, $bg-line-dim, 75px, 50px, 2px);
+  @include mobile {
+    @include bg-mesh(transparent, $bg-line, $bg-line-dim, 50px, 25px, 2px);
+  }
+}
+
+//=============================================================================
+//  Header
+//=============================================================================
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 20px 0;
+  color: $text-bright;
+  font-family: 'Inconsolata', monospace;
+  font-size: 26px;
+  @include mobile {
+    font-size: 22px;
+  }
+}
+
+//=============================================================================
+//  Intro
+//=============================================================================
+
+.intro {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  p {
+    margin: 10px auto;
+    max-width: 800px;
+    font-size: 16px;
+    letter-spacing: .005em;
+    @include tablet {
+      margin: 8px 20px;
+      font-size: 15px;
+    }
+    @include mobile {
+      margin: 6px 15px;
+      font-size: 14px;
+    }
+  }
+}
+
+//=============================================================================
+//  Footer
+//=============================================================================
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: $footer-height;
+  background: $bg-block;
+  color: $text-link;
+  font-size: 14px;
+  letter-spacing: .005em;
+  a {
+    display: flex;
+    gap: .75em;
+    padding: 5px;
+    transition: .2s;
+    cursor: pointer;
+    @include hover {
+      filter: hue-rotate(45deg);
+    }
+  }
+  img {
+    margin-top: 1px;
+    @include square(15px);
+  }
+}

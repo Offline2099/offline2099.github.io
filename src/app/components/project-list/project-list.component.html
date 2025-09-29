@@ -1,0 +1,70 @@
+@for (project of projects; track project.id) {
+  <div class="project">
+
+    <!-- Project Data Block -->
+    <div class="data-block">
+
+      <!-- Name -->
+      <div class="project-name">{{project.name}}</div>
+
+      <!-- Links -->
+      <div class="project-links">
+        @if (project.site) {
+          <ng-template
+            [ngTemplateOutlet]="link"
+            [ngTemplateOutletContext]="{url: project.site, icon: 'world', text: 'Website'}"
+          />
+        }
+        @if (project.site && project.repo) {
+          <div class="separator"></div>
+        }
+        @if (project.repo) {
+          <ng-template
+            [ngTemplateOutlet]="link"
+            [ngTemplateOutletContext]="{url: project.repo, icon: 'github', text: 'Repository'}"
+          />
+        }
+      </div>
+
+      <!-- Images -->
+      <app-image-carousel [images]="project.imageData" />
+
+    </div>
+
+    <!-- Project Description Block -->
+    <div 
+      class="description-block"
+      [ngClass]="{'collapsed': project.areFeaturesCollapsed && screen === Screen.mobile}">
+
+      <!-- Summary -->
+      <p>{{project.description.summary}}</p>
+
+      <!-- Feature List Header (Mobile Layout) -->
+      @if (screen === Screen.mobile) {
+        <div class="feature-list-header" (click)="toggleFeatures(project)">
+          <span>Features</span>
+          <span class="triangle">&#9660;</span>
+        </div>
+      }
+
+      <!-- Features -->
+      <ul class="feature-list">
+        @for (feature of project.description.features; track $index) {
+          <li>{{feature}}</li>
+        }
+      </ul>
+
+    </div>
+
+  </div>
+}
+
+<!-- Link Template -->
+<ng-template #link let-url="url" let-icon="icon" let-text="text">
+  <a class="project-url" href="https://{{url}}" target="_blank">
+    <img class="link-type-icon" src="img/icons/{{icon}}.webp" alt="" />
+    <span>{{text}}</span>
+    <img class="ext-link-icon" src="img/icons/external-link.webp" alt="" />
+    <div class="link-underline"></div>
+  </a>
+</ng-template>

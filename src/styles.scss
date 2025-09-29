@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles-shared' as *;
+
+body {
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background: $bg-page;
+  color: $text-normal;
+  font-family: 'Open Sans', sans-serif;
+  cursor: default;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::selection {
+  background: $bg-selection;
+  color: $text-selection;
+}

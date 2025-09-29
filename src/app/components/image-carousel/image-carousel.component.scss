@@ -1,0 +1,145 @@
+@use 'sass:color';
+@use '../../../styles-shared' as *;
+
+:host {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  user-select: none;
+  .inside-overlay {
+    max-width: min(2000px, 90%, 16 * (90vh - 54px)/ 9 + 88px);
+    max-height: calc(90vh - 10px);
+    margin: 0 auto;
+    padding-top: 10px;
+    border-radius: 10px;
+    background: $bg-block;
+    box-shadow: 0 0 2px 2px $shadow-normal inset;
+  }
+}
+
+//=============================================================================
+//  Blocks
+//=============================================================================
+
+.image-block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  max-height: calc(90vh - 54px);
+}
+
+.button-block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+//=============================================================================
+//  Image Block Content
+//=============================================================================
+
+.image-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 1px solid $border-normal;
+  background: $bg-page;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: .2s;
+    animation: fade-in .5s;
+    cursor: pointer;
+    @include hover {
+      filter: brightness(1.05);
+    }
+    @include mobile {
+      cursor: default;
+    }
+  }
+}
+
+:host.inside-overlay .image-container img {
+  cursor: default;
+}
+
+.side-button-container {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+:host.inside-overlay .side-button-container {
+  padding: 0 10px;
+}
+
+.side-button {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 5px;
+  border-radius: 4px;
+  color: $text-dim;
+  background: $bg-button;
+  transition: .2s;
+  cursor: pointer;
+  @include hover {
+    background: $bg-button-hovered;
+  }
+  @include mobile {
+    height: 42px;
+    font-size: 14px;
+  }
+}
+
+//=============================================================================
+//  Button Block Content
+//=============================================================================
+
+.bottom-button {
+  @include square(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  border-radius: 25%;
+  background: $bg-button;
+  font-size: 14px;
+  transition: .2s;
+  cursor: pointer;
+  &.selected {
+    background: $bg-button-selected;
+    pointer-events: none;
+  }
+  @include hover {
+    background: $bg-button-hovered;
+  }
+  @include mobile {
+    @include square(20px);
+    margin: 0 3px;
+    font-size: 12px;
+  }
+}
+
+//=============================================================================
+//  Overlay
+//=============================================================================
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  animation: fade-in .5s;
+  @include bg-mesh(color.adjust($bg-page, $alpha: -0.1), $bg-line, $bg-line, 50px, 50px, 2px, 2px, 45deg);
+}
