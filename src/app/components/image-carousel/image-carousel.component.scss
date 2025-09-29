@@ -9,7 +9,6 @@
   user-select: none;
   .inside-overlay {
     max-width: min(2000px, 90%, 16 * (90vh - 54px)/ 9 + 88px);
-    max-height: calc(90vh - 10px);
     margin: 0 auto;
     padding-top: 10px;
     border-radius: 10px;
