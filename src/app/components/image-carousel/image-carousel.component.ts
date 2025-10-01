@@ -1,10 +1,13 @@
-import { Component, HostBinding, ViewChild, ElementRef, input, output } from '@angular/core';
+import { Component, HostBinding, ViewChild, ElementRef, input, model } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Subscription, timer } from 'rxjs';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
 import { Screen } from '../../constants/layout';
 import { ImageData } from '../../types/image-data.interface';
 import { LayoutService } from '../../services/layout.service';
+
+const NONE: number = -1;
+const DEFAULT_INDEX: number = 0;
 
 @Component({
   selector: 'app-image-carousel',
@@ -21,10 +24,7 @@ export class ImageCarouselComponent {
 
   images = input.required<ImageData[]>();
   isInsideOverlay = input<boolean>(false);
-
-  imageChanged = output<number>();
-
-  selectedIndex: number = 0;
+  selectedIndex = model<number>(DEFAULT_INDEX);
 
   subscription: Subscription;
   screen!: Screen;
@@ -37,21 +37,20 @@ export class ImageCarouselComponent {
   }
 
   nextImage(): void {
-    const newIndex = this.selectedIndex + 1;
+    const newIndex = this.selectedIndex() + 1;
     this.selectImage(newIndex >= this.images().length ? 0 : newIndex);
   }
 
   previousImage(): void {
-    const newIndex = this.selectedIndex - 1;
+    const newIndex = this.selectedIndex() - 1;
     this.selectImage(newIndex < 0 ? this.images().length - 1 : newIndex);
   }
 
   selectImage(index: number): void {
-    if (index < 0 || index >= this.images().length || index === this.selectedIndex) return;
-    this.selectedIndex = -1;
+    if (index < 0 || index >= this.images().length || index === this.selectedIndex()) return;
+    this.selectedIndex.set(NONE);
     timer(0).subscribe(() => {
-      this.selectedIndex = index;
-      if (this.isInsideOverlay()) this.imageChanged.emit(index);
+      this.selectedIndex.set(index);
     });
   }
 
