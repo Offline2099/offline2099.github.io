@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { BREAKPOINTS, Screen } from '../constants/layout';
 
 @Injectable({
@@ -8,12 +9,12 @@ import { BREAKPOINTS, Screen } from '../constants/layout';
 })
 export class LayoutService {
 
-  screen$: Observable<Screen>;
+  screen: Signal<Screen>;
 
   constructor(private observer: BreakpointObserver) {
-    this.screen$ = this.observer.observe(Object.values(BREAKPOINTS)).pipe(
+    this.screen = toSignal(this.observer.observe(Object.values(BREAKPOINTS)).pipe(
       map(breakpointState => this.getScreenWidthStatus(breakpointState))
-    );
+    ), { requireSync: true });
   }
 
   private getScreenWidthStatus(breakpointState: BreakpointState): Screen {

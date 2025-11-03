@@ -34,13 +34,13 @@
     <!-- Project Description Block -->
     <div 
       class="description-block"
-      [ngClass]="{'collapsed': project.areFeaturesCollapsed && screen === Screen.mobile}">
+      [ngClass]="{'collapsed': project.areFeaturesCollapsed && screen() === Screen.mobile}">
 
       <!-- Summary -->
       <p>{{project.description.summary}}</p>
 
       <!-- Feature List Header (Mobile Layout) -->
-      @if (screen === Screen.mobile) {
+      @if (screen() === Screen.mobile) {
         <div class="feature-list-header" (click)="toggleFeatures(project)">
           <span>Features</span>
           <span class="triangle">&#9660;</span>

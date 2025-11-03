@@ -1,6 +1,6 @@
-import { Component, HostBinding, ViewChild, ElementRef, input, model } from '@angular/core';
+import { Component, Signal, HostBinding, ViewChild, ElementRef, input, model } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Subscription, timer } from 'rxjs';
+import { timer } from 'rxjs';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
 import { Screen } from '../../constants/layout';
 import { ImageData } from '../../types/image-data.interface';
@@ -26,14 +26,13 @@ export class ImageCarouselComponent {
   isInsideOverlay = input<boolean>(false);
   selectedIndex = model<number>(DEFAULT_INDEX);
 
-  subscription: Subscription;
-  screen!: Screen;
+  screen: Signal<Screen>;
 
   isOverlayActive: boolean = false;
   options: BodyScrollOptions = { reserveScrollBarGap: true };
 
   constructor(private layout: LayoutService) {
-    this.subscription = this.layout.screen$.subscribe(screen => this.screen = screen);
+    this.screen = this.layout.screen;
   }
 
   nextImage(): void {
@@ -55,14 +54,13 @@ export class ImageCarouselComponent {
   }
 
   toggleOverlay(): void {
-    if (this.isInsideOverlay() || this.screen === Screen.mobile) return;
+    if (this.isInsideOverlay() || this.screen() === Screen.mobile) return;
     this.isOverlayActive = !this.isOverlayActive;
     if (this.isOverlayActive) disableBodyScroll(this.scrollTarget.nativeElement, this.options);
     else enableBodyScroll(this.scrollTarget.nativeElement);
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) this.subscription.unsubscribe();
     clearAllBodyScrollLocks();
   }
 

@@ -37,7 +37,7 @@
 </div>
 
 <!-- Overlay -->
-@if (isOverlayActive && screen !== Screen.mobile && !isInsideOverlay()) {
+@if (isOverlayActive && screen() !== Screen.mobile && !isInsideOverlay()) {
   <div class="overlay" (click)="toggleOverlay()">
     <app-image-carousel
       [images]="images()"

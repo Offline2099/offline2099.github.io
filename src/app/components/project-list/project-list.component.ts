@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Subscription } from 'rxjs';
 // Constants & Enums
 import { Screen } from '../../constants/layout';
 import { IMG_PATH, GH_PAGE_BASE, GH_REPO_BASE} from '../../constants/paths';
@@ -23,12 +22,11 @@ export class ProjectListComponent {
   readonly Screen = Screen;
 
   projects: Project[];
-  subscription: Subscription;
-  screen!: Screen;
+  screen: Signal<Screen>;
 
   constructor(private layout: LayoutService) {
     this.projects = this.constructProjectList();
-    this.subscription = this.layout.screen$.subscribe(screen => this.screen = screen);
+    this.screen = this.layout.screen;
   }
 
   ngAfterViewInit(): void {
@@ -53,7 +51,7 @@ export class ProjectListComponent {
   preloadAllImages(): void {
     this.projects.forEach(project => {
       this.preloadImages(project.imageData.map(data => data.smallSizeURL).slice(1));
-      if (this.screen !== Screen.mobile)
+      if (this.screen() !== Screen.mobile)
         this.preloadImages(project.imageData.map(data => data.fullSizeURL));
     });
   }
@@ -72,10 +70,6 @@ export class ProjectListComponent {
 
   toggleFeatures(project: Project): void {
     project.areFeaturesCollapsed = !project.areFeaturesCollapsed;
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) this.subscription.unsubscribe();
   }
 
 }
