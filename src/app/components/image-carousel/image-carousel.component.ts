@@ -1,4 +1,4 @@
-import { Component, Signal, HostBinding, ViewChild, ElementRef, input, model } from '@angular/core';
+import { Component, Signal, HostBinding, ViewChild, ElementRef, input, model, effect } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { timer } from 'rxjs';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks, BodyScrollOptions } from 'body-scroll-lock';
@@ -33,6 +33,10 @@ export class ImageCarouselComponent {
 
   constructor(private layout: LayoutService) {
     this.screen = this.layout.screen;
+    effect(() => {
+      if (this.screen() !== Screen.mobile && !this.isInsideOverlay() && this.isOverlayActive)
+        disableBodyScroll(this.scrollTarget.nativeElement, this.options);
+    });
   }
 
   nextImage(): void {
