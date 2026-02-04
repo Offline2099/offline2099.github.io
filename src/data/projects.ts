@@ -138,5 +138,18 @@ export const PROJECTS: ProjectData[] = [
         'While Angular is not the best environment for creating video games, it was an interesting and fun experience to attempt a project like this.'
       ]
     }
+  },
+  {
+    id: 'mazes',
+    name: 'Maze Generator',
+    numberOfImages: 3,
+    description: {
+      summary: 'A simple and intuitive maze generator with a number of options for the user. Has adaptive UI that is convenient for both desktop and mobile devices.',
+      features: [
+        'The maze is generated using an algorithm based on depth-first search. It guarantees that the resulting maze has all its parts connected with exactly one path, there are no loops, and there is always a path between the entrance and the exit.',
+        'The user can choose the maze\'s dimensions (the number of blocks horizontally and vertically) and adjust some visual parameters. The maze can also be saved as a PNG image.',
+        'There is a potential to expand the app with many more options for maze structure and styles.'
+      ]
+    }
   }
 ];
