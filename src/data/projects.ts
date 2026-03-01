@@ -142,7 +142,7 @@ export const PROJECTS: ProjectData[] = [
   {
     id: 'mazes',
     name: 'Maze Generator',
-    numberOfImages: 3,
+    numberOfImages: 4,
     description: {
       summary: 'A simple and intuitive maze generator with a number of options for the user. Has adaptive UI that is convenient for both desktop and mobile devices.',
       features: [
