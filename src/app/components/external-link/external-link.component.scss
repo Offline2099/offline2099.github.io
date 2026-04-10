@@ -1,0 +1,44 @@
+@use '../../../styles-shared' as *;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  color: $text-link;
+  text-decoration: none;
+  transition: .3s;
+  .link-underline {
+    width: 1%;
+    border-bottom: 1px dotted $text-link;
+    opacity: 0;
+    transition: .2s;
+    @include mobile {
+      margin: 0 12px;
+    }
+  }
+  @include hover {
+    filter: hue-rotate(45deg);
+    .link-underline {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.link-type-icon {
+  @include square(18px);
+  margin-right: 8px;
+}
+
+.ext-link-icon {
+  @include square(14px);
+  margin-left: 10px;
+  @include mobile {
+    @include square(12px);
+  }
+}

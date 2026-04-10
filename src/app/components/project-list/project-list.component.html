@@ -10,19 +10,13 @@
       <!-- Links -->
       <div class="project-links">
         @if (project.site) {
-          <ng-template
-            [ngTemplateOutlet]="link"
-            [ngTemplateOutletContext]="{url: project.site, icon: 'world', text: 'Website'}"
-          />
+          <a app-external-link [href]="project.site" icon="world" text="Website"></a>
         }
         @if (project.site && project.repo) {
           <div class="separator"></div>
         }
         @if (project.repo) {
-          <ng-template
-            [ngTemplateOutlet]="link"
-            [ngTemplateOutletContext]="{url: project.repo, icon: 'github', text: 'Repository'}"
-          />
+          <a app-external-link [href]="project.repo" icon="github" text="Repository"></a>
         }
       </div>
 
@@ -58,13 +52,3 @@
 
   </div>
 }
-
-<!-- Link Template -->
-<ng-template #link let-url="url" let-icon="icon" let-text="text">
-  <a class="project-url" href="https://{{url}}" target="_blank">
-    <img class="link-type-icon" src="img/icons/{{icon}}.webp" alt="" />
-    <span>{{text}}</span>
-    <img class="ext-link-icon" src="img/icons/external-link.webp" alt="" />
-    <div class="link-underline"></div>
-  </a>
-</ng-template>

@@ -1,18 +1,19 @@
 import { Component, Signal } from '@angular/core';
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgClass } from '@angular/common';
 // Constants & Enums
-import { IMG_PATH, GH_PAGE_BASE, GH_REPO_BASE } from '../../constants/paths';
+import { PROJECT_IMAGES, GH_PAGE_BASE, GH_REPO_BASE } from '../../constants/paths';
 import { PROJECTS } from '../../../data/projects';
 // Interfaces
 import { Project } from '../../types/project.interface';
 // Components
 import { ImageCarouselComponent } from '../image-carousel/image-carousel.component';
+import { ExternalLinkComponent } from "../external-link/external-link.component";
 // Services
 import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-project-list',
-  imports: [NgClass, NgTemplateOutlet, ImageCarouselComponent],
+  imports: [NgClass, ExternalLinkComponent, ImageCarouselComponent],
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.scss'
 })
@@ -45,7 +46,7 @@ export class ProjectListComponent {
   }
 
   projectImageURL(id: string, index: number, small: boolean = false): string {
-    return `${IMG_PATH}/${id}/${small ? 'small/': ''}${id}-${index + 1}.webp`;
+    return `${PROJECT_IMAGES}/${id}/${small ? 'small/': ''}${id}-${index + 1}.webp`;
   }
 
   preloadAllImages(): void {

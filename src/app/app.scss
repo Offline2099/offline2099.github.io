@@ -68,18 +68,4 @@ footer {
   color: $text-link;
   font-size: 14px;
   letter-spacing: .005em;
-  a {
-    display: flex;
-    gap: .75em;
-    padding: 5px;
-    transition: .2s;
-    cursor: pointer;
-    @include hover {
-      filter: hue-rotate(45deg);
-    }
-  }
-  img {
-    margin-top: 1px;
-    @include square(15px);
-  }
 }
