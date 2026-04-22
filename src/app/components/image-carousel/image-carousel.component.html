@@ -29,9 +29,9 @@
     <button
       type="button"
       class="bottom-button"
-      [ngClass]="{'selected': $index == selectedIndex()}"
+      [ngClass]="{ selected: $index === selectedIndex() }"
       (click)="selectImage($index)">
-      {{$index + 1}}
+      <span>{{ $index + 1 }}</span>
     </button>
   }
 </div>

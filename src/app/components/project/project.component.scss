@@ -1,39 +1,45 @@
-@use '../../../styles-shared' as *;
+@use '../../../scss' as *;
+
+$data-block-width: 500px;
+$description-width: 800px;
+
+@mixin block-mesh($size) {
+  @include bg-mesh($bg-block, $bg-line-block, $bg-line-block, $size, $size, 2px, 2px, $angle: 135deg);
+}
 
 :host {
   display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  margin-bottom: 200px;
-}
-
-//=============================================================================
-//  Containers
-//=============================================================================
-
-.project {
-  display: flex;
-  justify-content: center;
-  width: min(100% - 20px, 1300px);
+  width: min(100% - 20px, $data-block-width + $description-width);
   margin: 20px auto;
   border-radius: 8px;
-  background: $bg-block;
+  background-color: $bg-block;
   box-shadow: 0 0 2px 2px $shadow-normal inset;
+  transition: .2s;
+  @include block-mesh(30px);
+  @include hover {
+    background-color: $bg-block-hovered;
+  }
   @include tablet {
     flex-wrap: wrap;
+    justify-content: center;
     margin: 15px auto;
+    @include block-mesh(25px);
   }
   @include mobile {
     margin: 10px auto;
+    @include block-mesh(20px);
   }
 }
 
+//=============================================================================
+//  Blocks
+//=============================================================================
+
 .data-block {
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  flex-direction: column;
   justify-content: center;
-  width: 500px;
+  width: $data-block-width;
   padding: 10px 20px 10px 10px;
   @include tablet {
     padding: 8px;
@@ -45,9 +51,9 @@
 
 .description-block {
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  width: 800px;
+  flex-direction: column;
+  justify-content: center;
+  width: $description-width;
   padding: 20px 15px 20px 5px;
   letter-spacing: .005em;
   @include tablet {
@@ -67,32 +73,38 @@
 .project-name {
   display: flex;
   justify-content: center;
-  width: 100%;
-  padding-top: 10px;
-  color: $text-brighter;
-  font-family: 'Inconsolata', monospace;
-  font-size: 22px;
-  font-weight: 500;
-  @include mobile {
-    font-size: 18px;
+  margin-top: 10px;
+  h2 {
+    color: $text-brighter;
+    font-family: 'Inconsolata', monospace;
+    font-size: 24px;
+    font-weight: 500;
+    transition: .3s .1s;
+    @include hover {
+      letter-spacing: .03em;
+    }
+    @include tablet {
+      font-size: 22px;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
   }
 }
 
 .project-links {
   display: flex;
   justify-content: center;
-  width: 100%;
   margin: 15px 10px 20px 10px;
   user-select: none;
   @include mobile {
     margin: 10px;
   }
-}
-
-.separator {
-  height: 100%;
-  margin: 0 20px;
-  border-right: 1px solid $border-normal;
+  .separator {
+    height: 100%;
+    margin: 0 20px;
+    border-right: 1px solid $border-normal;
+  }
 }
 
 //=============================================================================
@@ -102,23 +114,32 @@
 p {
   margin-bottom: 10px;
   @include mobile {
-    padding-left: 5px;
+    padding: 0 5px;
   }
 }
 
-.feature-list-header {
+.feature-list-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   padding: 3px 10px 5px 10px;
-  margin-bottom: 10px;
   border-bottom: 1px dashed $border-normal;
+  background-color: transparent;
   font-size: 16px;
   letter-spacing: .02em;
   user-select: none;
   transition: .2s;
-  cursor: pointer;
+  &.collapsed {
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: $bg-button;
+    @include hover {
+      background-color: $bg-button-hovered;
+    }
+    .triangle {
+      transform: rotateX(0deg) translateY(-1px);
+    }
+  }
   .triangle {
     height: 14px;
     margin-left: 20px;
@@ -126,16 +147,6 @@ p {
     font-size: smaller;
     transform: rotateX(180deg) translateY(-3px);
     transition: .2s;
-  }
-}
-
-.description-block.collapsed .feature-list-header {
-  margin-bottom: 0;
-  border-radius: 5px;
-  border-color: transparent;
-  background: $bg-button;
-  .triangle {
-    transform: rotateX(0deg) translateY(-1px);
   }
 }
 
@@ -152,10 +163,8 @@ p {
     }
   }
   @include mobile {
+    margin: 0 0 0 20px;
+    padding-top: 10px;
     animation: fade-in .5s;
   }
-}
-
-.description-block.collapsed .feature-list {
-  display: none;
 }

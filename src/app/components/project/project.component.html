@@ -1,0 +1,54 @@
+<!-- Project Data Block -->
+<div class="data-block">
+
+  <!-- Name -->
+  <div class="project-name">
+    <h2>{{ project().name }}</h2>
+  </div>
+
+  <!-- Links -->
+  <div class="project-links">
+    @if (siteURL(); as site) {
+      <a app-external-link [href]="site" icon="world" text="Website"></a>
+    }
+    @if (siteURL() && repoURL()) {
+      <div class="separator"></div>
+    }
+    @if (repoURL(); as repo) {
+      <a app-external-link [href]="repo" icon="github" text="Repository"></a>
+    }
+  </div>
+
+  <!-- Images -->
+  <app-image-carousel [images]="imageData()" />
+
+</div>
+
+<!-- Project Description Block -->
+<div class="description-block">
+
+  <!-- Summary -->
+  <p>{{ project().description.summary }}</p>
+
+  <!-- Feature List Toggle Button (Mobile Layout) -->
+  @if (isMobile()) {
+    <button
+      type="button"
+      class="feature-list-button"
+      [ngClass]="{ collapsed: !areFeaturesShown && isMobile() }"
+      (click)="toggleFeatures()">
+      <span>Features</span>
+      <span class="triangle">&#9660;</span>
+    </button>
+  }
+
+  <!-- Features -->
+  @if (areFeaturesShown || !isMobile()) {
+    <ul class="feature-list">
+      @for (feature of project().description.features; track $index) {
+        <li>{{ feature }}</li>
+      }
+    </ul>
+  }
+
+</div>

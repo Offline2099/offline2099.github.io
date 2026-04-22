@@ -1,19 +1,31 @@
-@use './styles-shared' as *;
-
-body {
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-  background: $bg-page;
-  color: $text-normal;
-  font-family: 'Open Sans', sans-serif;
-  cursor: default;
-}
+@use './scss' as *;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background: 
+    repeating-linear-gradient(
+      135deg,
+      $bg-page-accent 0, $bg-page-accent 10vh,
+      transparent 50vh,
+      $bg-page-accent 90vh, $bg-page-accent 100vh
+    ),
+    repeating-linear-gradient(
+      225deg,
+      $bg-page 0,
+      $bg-page-accent 40vh, $bg-page-accent 60vh,
+      $bg-page 100vh
+    );
+  color: $text-normal;
+  font-family: 'Open Sans', sans-serif;
+  cursor: default;
 }
 
 a {
@@ -27,6 +39,7 @@ button {
   color: inherit;
   font-family: inherit;
   font-size: inherit;
+  cursor: pointer;
 }
 
 ::selection {

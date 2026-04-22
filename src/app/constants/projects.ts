@@ -1,6 +1,6 @@
-import { ProjectData } from '../app/types/project-data.interface';
+import { Project } from '../types/project.interface';
 
-export const PROJECTS: ProjectData[] = [
+export const PROJECTS: Project[] = [
   {
     id: 'photo-gallery',
     name: 'Photo Gallery',
@@ -50,7 +50,7 @@ export const PROJECTS: ProjectData[] = [
   {
     id: 'raidy-raidy',
     name: 'Raidy-Raidy',
-    site: 'raidy-raidy.com',
+    site: 'https://raidy-raidy.com',
     repo: null,
     numberOfImages: 9,
     description: {

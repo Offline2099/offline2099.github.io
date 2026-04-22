@@ -1,7 +1,12 @@
-import { ProjectData } from './project-data.interface';
-import { ImageData } from './image-data.interface';
-
-export interface Project extends ProjectData {
-  imageData: ImageData[];
-  areFeaturesCollapsed: boolean;
+export interface Project {
+  id: string;
+  isHidden?: boolean;
+  name: string;
+  site?: string | null;
+  repo?: string | null;
+  numberOfImages: number;
+  description: {
+    summary: string;
+    features: string[];
+  };
 }

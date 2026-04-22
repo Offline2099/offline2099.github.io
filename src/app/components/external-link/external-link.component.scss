@@ -1,4 +1,4 @@
-@use '../../../styles-shared' as *;
+@use '../../../scss' as *;
 
 :host {
   display: flex;
@@ -7,16 +7,12 @@
   justify-content: center;
   height: 28px;
   color: $text-link;
-  text-decoration: none;
   transition: .3s;
   .link-underline {
     width: 1%;
     border-bottom: 1px dotted $text-link;
     opacity: 0;
-    transition: .2s;
-    @include mobile {
-      margin: 0 12px;
-    }
+    transition: .3s;
   }
   @include hover {
     filter: hue-rotate(45deg);
@@ -25,19 +21,22 @@
       opacity: 1;
     }
   }
+  @include tablet {
+    font-size: 15px;
+  }
   @include mobile {
     font-size: 14px;
   }
 }
 
 .link-type-icon {
-  @include square(18px);
   margin-right: 8px;
+  @include square(18px);
 }
 
 .ext-link-icon {
-  @include square(14px);
   margin-left: 10px;
+  @include square(14px);
   @include mobile {
     @include square(12px);
   }

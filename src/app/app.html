@@ -1,12 +1,16 @@
-<header>offline2099.github.io</header>
+<header>
+  <h1>offline2099.github.io</h1>
+</header>
 
 <div class="intro">
   @for (paragraph of intro; track $index) {
-    <p>{{paragraph}}</p>
+    <p>{{ paragraph }}</p>
   }
 </div>
 
-<app-project-list />
+@for (project of projects; track project.id) {
+  <app-project [project]="project" />
+}
 
 <footer>
   <a app-external-link [href]="repoURL" text="Repository for this page"></a>

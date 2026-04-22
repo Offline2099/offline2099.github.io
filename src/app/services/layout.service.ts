@@ -2,7 +2,8 @@ import { Injectable, Signal, computed } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { BREAKPOINTS, Screen } from '../constants/layout';
+import { Screen } from '../constants/layout/screen.enum';
+import { BREAKPOINTS } from '../constants/layout/breakpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ export class LayoutService {
   isMobile: Signal<boolean>;
 
   constructor(private observer: BreakpointObserver) {
-    this.screen = toSignal(this.observer.observe(Object.values(BREAKPOINTS)).pipe(
-      map(state => this.getScreen(state))
-    ), { requireSync: true });
+    this.screen = toSignal(
+      this.observer.observe(Object.values(BREAKPOINTS)).pipe(map(state => this.getScreen(state))),
+      { requireSync: true }
+    );
     this.isMobile = computed<boolean>(() => this.screen() === Screen.mobile);
   }
 
@@ -24,5 +26,5 @@ export class LayoutService {
       Object.entries(BREAKPOINTS).find(([_, value]) => state.breakpoints[value])![0]
     ) as Screen;
   }
-
+  
 }
